@@ -3,8 +3,6 @@
 
 package dev.flametrench.audit;
 
-import com.fasterxml.uuid.Generators;
-import com.fasterxml.uuid.impl.TimeBasedEpochGenerator;
 import dev.flametrench.ids.Id;
 
 import java.time.Clock;
@@ -18,9 +16,6 @@ import java.util.Map;
  * server-authoritative {@code recorded_at}, and shape validation on write.
  */
 public class InMemoryAuditStore {
-
-    private static final TimeBasedEpochGenerator UUID_V7_GEN =
-            Generators.timeBasedEpochGenerator();
 
     private final Map<String, AuditEvent> events = new LinkedHashMap<>();
     private final Clock clock;
@@ -43,9 +38,7 @@ public class InMemoryAuditStore {
     public String write(AuditEventInput input) {
         validate(input);
 
-        String uuid = UUID_V7_GEN.generate().toString();
-        String hex = uuid.replace("-", "").toLowerCase();
-        String id = "aud_" + hex;
+        String id = Id.generate("aud");
 
         Instant recordedAt = Instant.now(clock);
 

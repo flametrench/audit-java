@@ -49,21 +49,13 @@
         <maven.compiler.release>17</maven.compiler.release>
         <junit.version>5.11.4</junit.version>
         <jackson.version>2.18.2</jackson.version>
-        <uuid-gen.version>5.1.0</uuid-gen.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>dev.flametrench</groupId>
             <artifactId>ids</artifactId>
-            <version>0.3.0</version>
-        </dependency>
-
-        <!-- UUIDv7 generation for aud_ ids (aud not yet in ids-java v0.3 TYPES map) -->
-        <dependency>
-            <groupId>com.fasterxml.uuid</groupId>
-            <artifactId>java-uuid-generator</artifactId>
-            <version>${uuid-gen.version}</version>
+            <version>0.4.0</version>
         </dependency>
 
         <dependency>
